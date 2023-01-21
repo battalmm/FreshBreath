@@ -1,0 +1,32 @@
+{
+    "home":{
+        "passedTimeHeader" : "Passed Time",
+        "day":"Day",
+        "hour":"Hour",
+        "minute":"Min",
+        "second":"sec",
+        "notSmokedHeader":"Not Smoked",
+        "healthHeader":"Health",
+        "savedTimeHeader":"Saved Time",
+        "minuteOneChar":" m",
+        "hourOneChar":" h",
+        "moneyHeader":"Money"
+    },
+
+    "settings":{
+        "settingsHeader":"Informations",
+        "dailySmokeCount":"Daily smoke count",
+        "cigaratteCountPerPackage":"Cigaratte Count in Per Package",
+        "pricePackage":"Price of Per Package",
+        "smokeDuration":"Smoke Duration (m)",
+        "currentValue":"Currently "
+    },
+
+    "buttons":{
+        "save":"Save"
+    }
+}
+
+
+
+

@@ -1,0 +1,28 @@
+{
+    "home":{
+        "passedTimeHeader" : "Geçen Zaman",
+        "day":"Gün",
+        "hour":"Saat",
+        "minute":"Dakika",
+        "second":"s",
+        "notSmokedHeader":"Sigara",
+        "healthHeader":"Sağlık",
+        "savedTimeHeader":"Zaman",
+        "minuteOneChar":" dk",
+        "hourOneChar":" s",
+        "moneyHeader":"Para"
+    },
+
+    "settings":{
+        "settingsHeader":"Bilgiler",
+        "dailySmokeCount":"Günlük içilen sigara miktarı",
+        "cigaratteCountPerPackage":"Paketteki sigara sayısı",
+        "pricePackage":"Paketin fiyatı",
+        "smokeDuration":"Sigara içme süresi (dk)",
+        "currentValue":"Değer "
+    },
+
+    "buttons":{
+        "save":"Kaydet"
+    }
+}
