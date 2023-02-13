@@ -23,6 +23,7 @@
     },
 
     "buttons":{
-        "save":"Kaydet"
+        "save":"Kaydet",
+        "info":"Bilgi..."
     }
 }

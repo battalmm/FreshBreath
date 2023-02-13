@@ -22,7 +22,7 @@ class NavigationRoutesPathGeneration {
           userInfo: valueList,
         ));
 
-      case NavigationRoutes.goals:
+      case NavigationRoutes.settingsTest:
         return _normalRoute(TestView2());
 
       case NavigationRoutes.settings:
@@ -38,4 +38,4 @@ class NavigationRoutesPathGeneration {
   }
 }
 
-enum NavigationRoutes { home, information, goals, settings, test }
+enum NavigationRoutes { home, information, settingsTest, settings, test }

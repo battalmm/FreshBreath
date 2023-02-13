@@ -33,7 +33,6 @@ class _HomeViewState extends State<HomeView> {
       onBuilder: _scaffoldBuild,
       onInitModal: () {
         homeViewModal = HomeViewModal();
-
         homeViewModal.init();
       },
     );
@@ -48,7 +47,20 @@ class _HomeViewState extends State<HomeView> {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         items: _bottomNavigationItems,
         onTap: (index) {
-          debugPrint(index.toString());
+          switch (index) {
+            case 0:
+              NavigationService.instance
+                  .pushNamedClear(path: NavigationRoutes.home);
+              break;
+            case 1:
+              NavigationService.instance
+                  .pushNamedClear(path: NavigationRoutes.test);
+              break;
+            case 2:
+              NavigationService.instance
+                  .pushNamedClear(path: NavigationRoutes.settings);
+              break;
+          }
         },
       ),
       body: Padding(

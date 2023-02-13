@@ -23,7 +23,8 @@
     },
 
     "buttons":{
-        "save":"Save"
+        "save":"Save",
+        "info":"Information..."
     }
 }
 
