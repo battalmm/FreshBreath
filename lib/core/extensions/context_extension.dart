@@ -15,6 +15,9 @@ extension PaddingExtension on BuildContext {
   EdgeInsetsGeometry get mediumPaddingOnlyLeft =>
       const EdgeInsets.only(left: 10);
 
+  EdgeInsetsGeometry get mediumPaddingOnlyRight =>
+      const EdgeInsets.only(right: 10);
+
   EdgeInsetsGeometry get mediumPaddingOnlyBottom =>
       const EdgeInsets.only(bottom: 16);
 }
@@ -25,4 +28,6 @@ extension MediaQueryExtension on BuildContext {
   double get mediaQueryWidth => MediaQuery.of(this).size.width;
 
   double get mediaQueryHeightMedium => MediaQuery.of(this).size.height / 5.5;
+
+  double get mediaQueryHeightSmall => MediaQuery.of(this).size.height / 12;
 }

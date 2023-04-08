@@ -17,7 +17,7 @@ abstract class _HomeViewModalBase with Store, BaseViewModel {
   }
 
   void dispose() {
-    _calculateTime();
+    _timer.cancel();
   }
 
   @observable
@@ -37,6 +37,8 @@ abstract class _HomeViewModalBase with Store, BaseViewModel {
 
   @observable
   List? timeDifferenceList;
+
+  late Timer _timer;
 
   @action
   String hourlySmokedCigaratteCalcullation(int hour) {
@@ -109,7 +111,7 @@ abstract class _HomeViewModalBase with Store, BaseViewModel {
     _initializeUser();
     _initializePickedTime();
 
-    Timer.periodic(const Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       _currentTime = DateTime.now();
 
       timeDifference = pickedTime != null

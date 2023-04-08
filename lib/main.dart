@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:smoking_application/core/init/cache/cache_manager.dart';
+import 'package:smoking_application/core/init/cache/shared_keys.dart';
 import 'core/constants/applications/app_constants.dart';
 import 'core/init/language/language_manager.dart';
 import 'core/init/navigation/navigation_route.dart';
@@ -17,10 +18,10 @@ Future<void> main() async {
     providers: [
       ChangeNotifierProvider<ThemeNotifier>(
         create: (_) => ThemeNotifier(),
-      )
+      ),
     ],
     child: EasyLocalization(
-        startLocale: LanguageManager.instance.trLocale,
+        startLocale: Locale(LanguageManager.instance.getLanguageOption),
         fallbackLocale: LanguageManager.instance.trLocale,
         saveLocale: true,
         supportedLocales: LanguageManager.instance.locals,

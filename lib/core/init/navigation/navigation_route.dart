@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smoking_application/view/home/view/home.dart';
 import 'package:smoking_application/view/information/informations_view.dart';
 import 'package:smoking_application/view/test/testwiev/second_test_view.dart';
+import 'package:smoking_application/view/test/testwiev/test_view_copy1.dart';
 
 import '../../../view/settings/view/settings.dart';
 
@@ -29,7 +30,7 @@ class NavigationRoutesPathGeneration {
         return _normalRoute(const SettingsView());
 
       case NavigationRoutes.test:
-        return _normalRoute(TestView2());
+        return _normalRoute(TestView1());
     }
   }
 

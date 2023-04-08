@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:smoking_application/core/base/view/base_view.dart';
@@ -64,13 +63,13 @@ class _InformationsViewState extends BaseState<InformationsView> {
       if (hour > 0 || day > 0) {
         value = 1;
       } else {
-        value = minute / target;
+        value = (minute / target) >= 1 ? 1 : (minute / target);
       }
     } else if (index > 0 && index < 5) {
       if (day > 0) {
         value = 1;
       } else {
-        value = hour / target;
+        value = (hour / target) >= 1 ? 1 : (hour / target);
       }
     } else if (index == 5) {
       value = (day / target) >= 1 ? 1 : (day / target);

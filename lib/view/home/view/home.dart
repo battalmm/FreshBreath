@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
@@ -13,9 +14,11 @@ import 'package:smoking_application/product/widget/row_widget_third.dart';
 import 'package:smoking_application/view/home/viewmodal/home_viewmodal.dart';
 
 import '../../../core/extensions/context_extension.dart';
+import '../../../core/init/language/language_manager.dart';
 import '../../../core/init/navigation/navigation_route.dart';
 import '../../../core/init/navigation/navigation_service.dart';
 import '../../../product/enum/app_themes.dart';
+import '../../../product/enum/languages.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -40,6 +43,7 @@ class _HomeViewState extends State<HomeView> {
 
   Widget _scaffoldBuild(BuildContext context) {
     return Scaffold(
+      // BOTTOM NAVİGATİONI ÇIKAR
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: false,
         showSelectedLabels: false,
@@ -49,8 +53,8 @@ class _HomeViewState extends State<HomeView> {
         onTap: (index) {
           switch (index) {
             case 0:
-              NavigationService.instance
-                  .pushNamedClear(path: NavigationRoutes.home);
+              homeViewModal.dispose();
+              NavigationService.instance.pushtest(path: NavigationRoutes.home);
               break;
             case 1:
               NavigationService.instance
@@ -59,6 +63,7 @@ class _HomeViewState extends State<HomeView> {
             case 2:
               NavigationService.instance
                   .pushNamedClear(path: NavigationRoutes.settings);
+
               break;
           }
         },
@@ -83,40 +88,13 @@ class _HomeViewState extends State<HomeView> {
               flex: 2,
               child: _thirdContainer(context),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Provider.of<ThemeNotifier>(context, listen: false)
-                    .changeTheme(AppThemes.dark);
-              },
-              child: Text("tema"),
-            ),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     context.setLocale(LanguageManager.instance.enLocale);
-            //     CacheManager.instance
-            //         .setStringValue(SharedKeys.language, "value");
-            //   },
-            //   child: Text("DilEn"),
-            // ),
             // ElevatedButton(
             //   onPressed: () {
             //     context.setLocale(LanguageManager.instance.trLocale);
+            //     LanguageManager.instance.saveLanguageOption(LanguageOptions.tr);
             //   },
-            //   child: Text("Diltr"),
+            //   child: Text("tema dark"),
             // ),
-            // ElevatedButton(
-            //   onPressed: (() {
-            //     homeViewModal.refreshPickedTimeAndSave();
-            //   }),
-            //   child: Text("Refresh"),
-            // ),
-            // ElevatedButton(
-            //   onPressed: (() {
-            //     NavigationService.instance
-            //         .pushNamed(path: NavigationRoutes.settings);
-            //   }),
-            //   child: Text("settings"),
-            // )
           ],
         ),
       ),

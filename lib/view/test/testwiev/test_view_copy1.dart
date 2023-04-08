@@ -2,7 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:smoking_application/core/base/view/base_view.dart';
+import 'package:smoking_application/view/options/view/options_view.dart';
 import 'package:smoking_application/view/test/test_modal_view/testmw.dart';
+import 'package:smoking_application/view/test/testwiev/second_test_view.dart';
+
+import '../../home/view/home.dart';
+import '../../settings/view/settings.dart';
 
 class TestView1 extends StatefulWidget {
   const TestView1({Key? key}) : super(key: key);
@@ -11,79 +16,50 @@ class TestView1 extends StatefulWidget {
   State<TestView1> createState() => _TestViewState();
 }
 
-class _TestViewState extends State<TestView1> {
-  late TestModalWiev viewModel;
+class _TestViewState extends State<TestView1> with TickerProviderStateMixin {
+  late final TabController _tabController;
 
   @override
   Widget build(BuildContext context) {
     return BaseView<TestModalWiev>(
       onInitModal: () {
-        viewModel = TestModalWiev();
-        viewModel.init();
+        _tabController =
+            TabController(length: _TabViews.values.length, vsync: this);
       },
-      onBuilder: (
-        context,
-      ) {
-        return scaffoldBody;
-      },
+      onBuilder: scaffoldBody,
     );
   }
 
-  Scaffold get scaffoldBody {
-    debugPrint("**************scaffoldBody tetiklendi****************  ");
-
-    return Scaffold(
-      appBar: AppBar(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const Divider(height: 66),
-            _difference(),
-            const Divider(height: 66),
-            _setTime(),
-            const Divider(height: 66),
-            _timeSeconf(),
-            const Divider(height: 66),
-            _timeThird(),
-            _timefourth()
-          ],
-        ),
+  Widget scaffoldBody(BuildContext context) {
+    return DefaultTabController(
+      length: _TabViews.values.length,
+      child: Scaffold(
+        appBar: AppBar(),
+        bottomNavigationBar: BottomAppBar(child: _tabView()),
+        body: _tabBarView(),
       ),
     );
   }
 
-  Widget _difference() => Observer(
-        builder: (context) => Text(
-          viewModel.timeDifference.toString(),
-        ),
-      );
+  TabBar _tabView() {
+    return TabBar(
+        padding: EdgeInsets.zero,
+        onTap: (int index) {},
+        controller: _tabController,
+        tabs: _TabViews.values.map((e) => Tab(text: e.name)).toList());
+  }
 
-  Widget _timeSeconf() => Observer(
-        builder: (context) => Text(
-          viewModel.user == null ? "Loading..." : viewModel.user.toString(),
-        ),
-      );
-
-  Widget _timeThird() => Observer(
-        builder: (context) => Text(
-          viewModel.user == null
-              ? "Loading..."
-              : viewModel.user!.getSeconds.toString(),
-        ),
-      );
-
-  Widget _timefourth() => Observer(
-        builder: (context) => Text(
-          viewModel.user == null
-              ? "Loading..."
-              : viewModel.user!.getMinutes.toString(),
-        ),
-      );
-
-  Widget _setTime() => Observer(
-      builder: (context) => ElevatedButton(
-          onPressed: () {
-            viewModel.refreshPickedTimeAndSave();
-          },
-          child: Text(viewModel.pickedTime.toString())));
+  TabBarView _tabBarView() {
+    return TabBarView(
+      physics: const NeverScrollableScrollPhysics(),
+      controller: _tabController,
+      children: const [
+        OptionsView(),
+        TestView2(),
+        SettingsView(),
+      ],
+    );
+  }
 }
+
+enum _TabViews { home, info, settings }

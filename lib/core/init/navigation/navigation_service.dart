@@ -34,4 +34,11 @@ class NavigationService extends INavigationService {
   void pop() {
     navigatorKey.currentState?.pop();
   }
+
+  @override
+  Future<void> pushtest({required NavigationRoutes path, Object? args}) async {
+    await navigatorKey.currentState!.popAndPushNamed(
+      path.name,
+    );
+  }
 }
