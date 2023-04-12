@@ -1,7 +1,5 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-// ignore_for_file: constant_identifier_names
-
 abstract class  LocaleKeys {
   static const home_passedTimeHeader = 'home.passedTimeHeader';
   static const home_day = 'home.day';
@@ -22,7 +20,14 @@ abstract class  LocaleKeys {
   static const settings_smokeDuration = 'settings.smokeDuration';
   static const settings_currentValue = 'settings.currentValue';
   static const settings = 'settings';
+  static const options_optionsTitle = 'options.optionsTitle';
+  static const options_optionsLanguage = 'options.optionsLanguage';
+  static const options_optionsInformations = 'options.optionsInformations';
+  static const options_optionsTheme = 'options.optionsTheme';
+  static const options_optionsRestart = 'options.optionsRestart';
+  static const options = 'options';
   static const buttons_save = 'buttons.save';
+  static const buttons_info = 'buttons.info';
   static const buttons = 'buttons';
 
 }

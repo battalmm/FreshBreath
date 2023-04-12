@@ -1,137 +1,218 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 import 'package:smoking_application/core/base/view/base_view.dart';
 import 'package:smoking_application/core/extensions/context_extension.dart';
-
+import 'package:smoking_application/core/extensions/string_extension.dart';
+import 'package:lottie/lottie.dart';
+import 'package:smoking_application/product/enum/lottie_path.dart';
+import 'package:smoking_application/product/widget/dropdown_button.dart';
+import '../../../core/extensions/duration_extension.dart';
+import '../../../core/init/cache/cache_manager.dart';
+import '../../../core/init/cache/shared_keys.dart';
+import '../../../core/init/language/language_manager.dart';
+import '../../../core/init/language/locale_keys.g.dart';
+import '../../../core/init/navigation/navigation_route.dart';
+import '../../../core/init/navigation/navigation_service.dart';
+import '../../../core/init/notifier/theme_notifier.dart';
+import '../../../product/enum/app_themes.dart';
+import '../../../product/enum/languages.dart';
 import '../../../product/widget/header_and_body.dart';
 
+part 'options_view_part.dart';
+
 class OptionsView extends StatefulWidget {
-  const OptionsView({Key? key}) : super(key: key);
+  OptionsView({Key? key}) : super(key: key);
 
   @override
   State<OptionsView> createState() => _OptionsViewState();
 }
 
-class _OptionsViewState extends State<OptionsView> {
+class _OptionsViewState extends State<OptionsView>
+    with TickerProviderStateMixin {
+  late AnimationController controller;
+
   @override
   Widget build(BuildContext context) {
     return BaseView(
-      onBuilder: _scaffoldBuild,
-      onInitModal: () {},
+      onInitModal: () {
+        controller = AnimationController(
+            vsync: this, duration: const Duration().themeDurationZero);
+      },
+      onBuilder: (context) => _scaffoldBuild(context),
+      onDispose: () {
+        controller.dispose();
+      },
+    );
+  }
+
+  Scaffold _scaffoldBuild(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          // WİLL CHANGE
+          title: Text(LocaleKeys.options_optionsTitle.translate),
+          toolbarHeight: 50,
+        ),
+        body: Padding(
+            padding: context.mediumPaddingAll,
+            child: Column(children: [
+              Expanded(
+                flex: 2,
+                child: _firstContainer(
+                  context: context,
+                  text: LocaleKeys.options_optionsLanguage.translate,
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: _secondContainer(
+                  context: context,
+                  text: LocaleKeys.options_optionsInformations.translate,
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: _thirdContainer(
+                  context: context,
+                  text: LocaleKeys.options_optionsTheme.translate,
+                  controller: controller,
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: _fourthContainer(
+                  context: context,
+                  text: LocaleKeys.options_optionsRestart.translate,
+                ),
+              ),
+            ])));
+  }
+
+  BackGroundCard _firstContainer(
+      {required BuildContext context, required String text}) {
+    return _backGroundCard(
+      context: context,
+      text: text,
+      icon: Icons.translate,
+      isClickable: false,
+      rightSideIcon: CustomDropdownButton(
+          titleText:
+              CacheManager.instance.getStringValue(SharedKeys.language) ?? "tr",
+          onChanged: (items) {
+            languageOptions(context, items);
+          }),
+    );
+  }
+
+  BackGroundCard _secondContainer(
+      {required BuildContext context, required String text}) {
+    return _backGroundCard(
+      context: context,
+      text: text,
+      icon: Icons.settings,
+      isClickable: true,
+      onTap: () {
+        navigateToSettings();
+      },
+    );
+  }
+
+  BackGroundCard _thirdContainer(
+      {required BuildContext context,
+      required String text,
+      required AnimationController controller}) {
+    return _backGroundCardForTheme(
+      context: context,
+      text: text,
+      icon: Icons.light_mode,
+      rightSideIcon: Lottie.asset(
+        LottieItems.themeChangeAnimationIcon.getLottie,
+        repeat: false,
+        controller: controller,
+        height: context.mediaQueryHeightSmall,
+        width: context.mediaQueryHeightSmall,
+        onLoaded: (p0) => onLoadAnimation(controller),
+      ),
+      onTap: () {
+        themeSettings(context, controller);
+      },
+    );
+  }
+
+  BackGroundCard _fourthContainer(
+      {required BuildContext context, required String text}) {
+    return _backGroundCard(
+      context: context,
+      isClickable: true,
+      text: text,
+      icon: Icons.restart_alt,
+      onTap: () {
+        refreshPickedTimeAndSave();
+      },
     );
   }
 }
 
-Widget _scaffoldBuild(BuildContext context) {
-  return Scaffold(
-      appBar: AppBar(
-        // WİLL CHANGE
-        title: Text("Options"),
-        toolbarHeight: 50,
-      ),
-      body: Padding(
-          padding: context.mediumPaddingAll,
-          child: Column(children: [
-            Expanded(
-              flex: 2,
-              child: _firstContainer(
-                context: context,
-                text: "Language",
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: _secondContainer(
-                context: context,
-                text: "Informations",
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: _thirdContainer(
-                context: context,
-                text: "Theme",
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: _fourthContainer(
-                context: context,
-                text: "I smoked restart.",
-              ),
-            ),
-          ])));
+// ****************** //
+// Logics
+
+Future<void> refreshPickedTimeAndSave() async {
+  DateTime? pickedTime;
+  pickedTime = DateTime.now();
+
+  await CacheManager.instance
+      .setStringValue(SharedKeys.pickedTime, pickedTime.toString());
 }
 
-Widget _firstContainer({required BuildContext context, required String text}) {
-  return _backGroundCard(
-    context: context,
-    text: text,
-    icon: Icons.translate,
-  );
+void themeSettings(BuildContext context, AnimationController controller) {
+  // Seperate from here
+  bool _themeController =
+      CacheManager.instance.getStringValue(SharedKeys.theme) == "LightTheme"
+          ? true
+          : false;
+
+  if (_themeController) {
+    Provider.of<ThemeNotifier>(context, listen: false)
+        .changeTheme(AppThemes.dark);
+    _themeController = !_themeController;
+  } else {
+    Provider.of<ThemeNotifier>(context, listen: false)
+        .changeTheme(AppThemes.light);
+    _themeController = !_themeController;
+  }
+  controller.animateTo(_themeController ? 1 : 0.5);
 }
 
-Widget _secondContainer({required BuildContext context, required String text}) {
-  return _backGroundCard(
-    context: context,
-    text: text,
-    icon: Icons.settings,
-  );
+void onLoadAnimation(AnimationController controller) {
+  bool _themeController =
+      CacheManager.instance.getStringValue(SharedKeys.theme) == "LightTheme"
+          ? true
+          : false;
+
+  controller.animateTo(_themeController ? 1 : 0.5);
+  controller.duration = Duration().themeDurationOne;
 }
 
-Widget _thirdContainer({required BuildContext context, required String text}) {
-  return _backGroundCard(
-    context: context,
-    text: text,
-    icon: Icons.light_mode,
-  );
+void navigateToSettings() {
+  NavigationService.instance.pushNamed(path: NavigationRoutes.settings);
 }
 
-Widget _fourthContainer({required BuildContext context, required String text}) {
-  return _backGroundCard(
-    context: context,
-    text: text,
-    icon: Icons.restart_alt,
-  );
-}
+void languageOptions(BuildContext context, String? localeCode) {
+  switch (localeCode) {
+    case "tr":
+      context.setLocale(LanguageManager.instance.trLocale);
+      LanguageManager.instance.saveLanguageOption(LanguageOptions.tr);
+      break;
 
-Widget _backGroundCard({
-  required BuildContext context,
-  required String text,
-  required IconData icon,
-}) {
-  return BackGroundCard(
-    height: context.mediaQueryHeightSmall,
-    iconPositionFromLeft: 25,
-    paddingVertical: 20,
-    stackedIcon: icon,
-    width: context.mediaQueryWidth,
-    child: _insideOfOptionsColumnRow(
-      context: context,
-      text: text,
-    ),
-  );
-}
+    case "en":
+      context.setLocale(LanguageManager.instance.enLocale);
+      LanguageManager.instance.saveLanguageOption(LanguageOptions.en);
+      break;
 
-Widget _insideOfOptionsColumnRow(
-    {required BuildContext context, required String text}) {
-  return Center(
-      child: Stack(
-    children: [
-      Center(
-        child: Text(text),
-      ),
-      Center(
-        child: Row(
-          children: [
-            const Spacer(),
-            Padding(
-              padding: context.mediumPaddingOnlyRight,
-              child: const Icon(Icons.arrow_circle_right),
-            ),
-          ],
-        ),
-      )
-    ],
-  ));
+    default:
+      context.setLocale(LanguageManager.instance.trLocale);
+      LanguageManager.instance.saveLanguageOption(LanguageOptions.tr);
+      break;
+  }
 }

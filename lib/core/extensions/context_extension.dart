@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 extension PaddingExtension on BuildContext {
@@ -5,9 +7,6 @@ extension PaddingExtension on BuildContext {
 
   EdgeInsetsGeometry get mediumPaddingVertical =>
       const EdgeInsets.symmetric(vertical: 20);
-
-  EdgeInsetsGeometry get smallPaddingVertical =>
-      const EdgeInsets.symmetric(vertical: 10);
 
   EdgeInsetsGeometry get mediumPaddingHorizontal =>
       const EdgeInsets.symmetric(horizontal: 20);
@@ -20,6 +19,11 @@ extension PaddingExtension on BuildContext {
 
   EdgeInsetsGeometry get mediumPaddingOnlyBottom =>
       const EdgeInsets.only(bottom: 16);
+
+  EdgeInsetsGeometry get smallPaddingAll => const EdgeInsets.all(8);
+
+  EdgeInsetsGeometry get smallPaddingVertical =>
+      const EdgeInsets.symmetric(vertical: 10);
 }
 
 extension MediaQueryExtension on BuildContext {

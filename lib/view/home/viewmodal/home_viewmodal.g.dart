@@ -90,6 +90,22 @@ mixin _$HomeViewModal on _HomeViewModalBase, Store {
     });
   }
 
+  late final _$timeDifferenceListAtom =
+      Atom(name: '_HomeViewModalBase.timeDifferenceList', context: context);
+
+  @override
+  List<dynamic>? get timeDifferenceList {
+    _$timeDifferenceListAtom.reportRead();
+    return super.timeDifferenceList;
+  }
+
+  @override
+  set timeDifferenceList(List<dynamic>? value) {
+    _$timeDifferenceListAtom.reportWrite(value, super.timeDifferenceList, () {
+      super.timeDifferenceList = value;
+    });
+  }
+
   late final _$_HomeViewModalBaseActionController =
       ActionController(name: '_HomeViewModalBase', context: context);
 
@@ -145,7 +161,8 @@ mixin _$HomeViewModal on _HomeViewModalBase, Store {
 pickedTime: ${pickedTime},
 timeDifference: ${timeDifference},
 user: ${user},
-hourlySmokedCigaratte: ${hourlySmokedCigaratte}
+hourlySmokedCigaratte: ${hourlySmokedCigaratte},
+timeDifferenceList: ${timeDifferenceList}
     ''';
   }
 }

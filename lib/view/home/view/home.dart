@@ -88,13 +88,6 @@ class _HomeViewState extends State<HomeView> {
               flex: 2,
               child: _thirdContainer(context),
             ),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     context.setLocale(LanguageManager.instance.trLocale);
-            //     LanguageManager.instance.saveLanguageOption(LanguageOptions.tr);
-            //   },
-            //   child: Text("tema dark"),
-            // ),
           ],
         ),
       ),
@@ -140,7 +133,8 @@ class _HomeViewState extends State<HomeView> {
             padding: context.smallPaddingVertical,
             child: AutoSizeText(LocaleKeys.home_passedTimeHeader.translate,
                 style: TextStyle(
-                    fontSize: Theme.of(context).textTheme.headline4!.fontSize)),
+                    fontSize:
+                        Theme.of(context).textTheme.headlineMedium!.fontSize)),
           ),
           Observer(
             builder: (context) => RowWidgethird(

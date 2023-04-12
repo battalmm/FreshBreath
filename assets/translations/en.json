@@ -22,6 +22,14 @@
         "currentValue":"Currently "
     },
 
+    "options":{
+        "optionsTitle":"Options",
+        "optionsLanguage":"Language",
+        "optionsInformations":"Informations",
+        "optionsTheme":"Theme",
+        "optionsRestart":"I smoked restart"
+    },
+
     "buttons":{
         "save":"Save",
         "info":"Information..."

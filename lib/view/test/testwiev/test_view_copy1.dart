@@ -8,6 +8,7 @@ import 'package:smoking_application/view/test/testwiev/second_test_view.dart';
 
 import '../../home/view/home.dart';
 import '../../settings/view/settings.dart';
+import 'Lottie.dart';
 
 class TestView1 extends StatefulWidget {
   const TestView1({Key? key}) : super(key: key);
@@ -53,10 +54,10 @@ class _TestViewState extends State<TestView1> with TickerProviderStateMixin {
     return TabBarView(
       physics: const NeverScrollableScrollPhysics(),
       controller: _tabController,
-      children: const [
+      children: [
         OptionsView(),
         TestView2(),
-        SettingsView(),
+        LottieTheme(),
       ],
     );
   }

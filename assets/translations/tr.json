@@ -22,6 +22,14 @@
         "currentValue":"Değer "
     },
 
+    "options":{
+        "optionsTitle":"Ayarlar",
+        "optionsLanguage":"Dil tercihi",
+        "optionsInformations":"Bilgiler",
+        "optionsTheme":"Tema",
+        "optionsRestart":"Sigara içtim. Başa dön."
+    },
+
     "buttons":{
         "save":"Kaydet",
         "info":"Bilgi..."

@@ -27,4 +27,7 @@ class LanguageManager {
 
   String get getLanguageOption =>
       CacheManager.instance.getStringValue(SharedKeys.language) ?? trString;
+
+  List<String> get getLanguageNames =>
+      [trLocale.languageCode, enLocale.languageCode];
 }
