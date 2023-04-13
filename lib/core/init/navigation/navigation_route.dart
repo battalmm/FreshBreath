@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:smoking_application/view/home/view/home.dart';
-import 'package:smoking_application/view/information/informations_view.dart';
 import 'package:smoking_application/view/options/view/options_view.dart';
 import 'package:smoking_application/view/tabview/tab_view.dart';
-import 'package:smoking_application/view/test/testwiev/second_test_view.dart';
 import 'package:smoking_application/view/test/testwiev/test_view_copy1.dart';
-
 import '../../../view/information/view/information_view_v2.dart';
 import '../../../view/settings/view/settings.dart';
 

@@ -60,11 +60,14 @@ abstract class _HomeViewModalBase with Store, BaseViewModel {
     int moneyOfOnePackage =
         CacheManager.instance.getIntValue(SharedKeys.pricePackage) ?? 1;
 
-    double perStockPrice = cigaratteInOnePackage /
-        (moneyOfOnePackage == 0 ? 1 : moneyOfOnePackage);
+    double perStockPrice = (moneyOfOnePackage == 0 ? 1 : moneyOfOnePackage) /
+        cigaratteInOnePackage;
 
     double totalMoney = ((hourlySmokedCigaratte ?? 0) * perStockPrice);
-    return totalMoney.toStringAsFixed(2);
+
+    return moneyOfOnePackage == 0
+        ? 0.toString()
+        : totalMoney.toStringAsFixed(2);
   }
 
   @action

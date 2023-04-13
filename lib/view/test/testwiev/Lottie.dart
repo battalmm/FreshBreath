@@ -3,6 +3,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:smoking_application/core/base/view/base_view.dart';
 import 'package:smoking_application/core/extensions/string_extension.dart';
 import 'package:smoking_application/core/init/cache/cache_manager.dart';
+
 import '../../../core/base/state/base_state.dart';
 import '../../../core/init/cache/shared_keys.dart';
 import '../../../core/init/language/locale_keys.g.dart';
@@ -35,6 +36,7 @@ class _InformationsViewTestState extends BaseState<InformationsViewTest> {
     _currentTime = DateTime.now();
     _pickedTime = initializePickedTime();
 
+    // ignore: unnecessary_null_comparison
     _timeDifference = _pickedTime != null
         ? _currentTime.difference(_pickedTime)
         : const Duration();
@@ -123,7 +125,7 @@ class _InformationsViewTestState extends BaseState<InformationsViewTest> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 65,
-        title: Text("Info"),
+        title: const Text("Info"),
         centerTitle: true,
       ),
       body: _listViewBuilder(),

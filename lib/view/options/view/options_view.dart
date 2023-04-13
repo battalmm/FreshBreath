@@ -1,14 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:smoking_application/core/base/view/base_view.dart';
 import 'package:smoking_application/core/extensions/context_extension.dart';
 import 'package:smoking_application/core/extensions/string_extension.dart';
-import 'package:lottie/lottie.dart';
 import 'package:smoking_application/product/enum/lottie_path.dart';
 import 'package:smoking_application/product/widget/dropdown_button.dart';
-import 'package:smoking_application/view/test/testwiev/Lottie.dart';
 import '../../../core/extensions/duration_extension.dart';
 import '../../../core/init/cache/cache_manager.dart';
 import '../../../core/init/cache/shared_keys.dart';
@@ -54,7 +52,6 @@ class _OptionsViewState extends State<OptionsView>
         appBar: AppBar(
           // WİLL CHANGE
           title: Text(LocaleKeys.options_optionsTitle.translate),
-          toolbarHeight: 50,
         ),
         body: Padding(
             padding: context.mediumPaddingAll,

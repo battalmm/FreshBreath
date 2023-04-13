@@ -38,6 +38,52 @@ abstract class LocaleKeys {
       'options.restartDialog.restartDialogOkayButton';
   static const options_restartDialog = 'options.restartDialog';
   static const options = 'options';
+  static const Informations_times_twentyMinutes =
+      'Informations.times.twentyMinutes';
+  static const Informations_times_eightHours = 'Informations.times.eightHours';
+  static const Informations_times_twelveHours =
+      'Informations.times.twelveHours';
+  static const Informations_times_twentyFourHours =
+      'Informations.times.twentyFourHours';
+  static const Informations_times_fourtyEightHours =
+      'Informations.times.fourtyEightHours';
+  static const Informations_times_threeDays = 'Informations.times.threeDays';
+  static const Informations_times_threeMonths =
+      'Informations.times.threeMonths';
+  static const Informations_times_sixMonths = 'Informations.times.sixMonths';
+  static const Informations_times_oneYear = 'Informations.times.oneYear';
+  static const Informations_times_fiveYear = 'Informations.times.fiveYear';
+  static const Informations_times_tenYear = 'Informations.times.tenYear';
+  static const Informations_times_fifteenYear =
+      'Informations.times.fifteenYear';
+  static const Informations_times = 'Informations.times';
+  static const Informations_infosRelatedTimes_twentyMinutesBrief =
+      'Informations.infosRelatedTimes.twentyMinutesBrief';
+  static const Informations_infosRelatedTimes_eightHoursBrief =
+      'Informations.infosRelatedTimes.eightHoursBrief';
+  static const Informations_infosRelatedTimes_twelveHoursBrief =
+      'Informations.infosRelatedTimes.twelveHoursBrief';
+  static const Informations_infosRelatedTimes_twentyFourHoursBrief =
+      'Informations.infosRelatedTimes.twentyFourHoursBrief';
+  static const Informations_infosRelatedTimes_fourtyEightHoursBrief =
+      'Informations.infosRelatedTimes.fourtyEightHoursBrief';
+  static const Informations_infosRelatedTimes_threeDaysBrief =
+      'Informations.infosRelatedTimes.threeDaysBrief';
+  static const Informations_infosRelatedTimes_threeMonthsBrief =
+      'Informations.infosRelatedTimes.threeMonthsBrief';
+  static const Informations_infosRelatedTimes_sixMonthsBrief =
+      'Informations.infosRelatedTimes.sixMonthsBrief';
+  static const Informations_infosRelatedTimes_oneYearBrief =
+      'Informations.infosRelatedTimes.oneYearBrief';
+  static const Informations_infosRelatedTimes_fiveYearBrief =
+      'Informations.infosRelatedTimes.fiveYearBrief';
+  static const Informations_infosRelatedTimes_tenYearBrief =
+      'Informations.infosRelatedTimes.tenYearBrief';
+  static const Informations_infosRelatedTimes_fifteenYearBrief =
+      'Informations.infosRelatedTimes.fifteenYearBrief';
+  static const Informations_infosRelatedTimes =
+      'Informations.infosRelatedTimes';
+  static const Informations = 'Informations';
   static const buttons_save = 'buttons.save';
   static const buttons_info = 'buttons.info';
   static const buttons = 'buttons';

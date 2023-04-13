@@ -36,6 +36,37 @@
         }
     },
 
+    "Informations":{
+        "times":{
+           "twentyMinutes":"20 dakika",
+            "eightHours":"8 saat ",
+            "twelveHours":"12 saat " ,
+            "twentyFourHours":"24 saat " ,
+            "fourtyEightHours":"48 saat " ,
+            "threeDays":"3 gün ",
+            "threeMonths":"3 gün ",
+            "sixMonths":"6 gün " ,
+            "oneYear":"1 yıl ",
+            "fiveYear":"5 yıl ",
+            "tenYear":"10 yıl ",
+            "fifteenYear":"15 yıl "
+        },
+        "infosRelatedTimes":{
+            "twentyMinutesBrief":"Kan basıncı ve nabız normal seviyelere düşer.",
+            "eightHoursBrief":"Kan dolaşımındaki nikotin ve karbonmonoksit seviyeleri yarı yarıya azalır.",
+            "twelveHoursBrief":"Kan dolaşımındaki karbonmonoksit seviyeleri normale döner.",
+            "twentyFourHoursBrief":"Kalp krizi riski azalmaya başlar.",
+            "fourtyEightHoursBrief":"Sinir uçları yeniden büyümeye başlar ve koku ve tat alma duyuları geri döner.",
+            "threeDaysBrief":"Solunum daha kolay hale gelir ve enerji seviyeleri artar.",
+            "threeMonthsBrief":"Akciğer fonksiyonları düzelmeye başlar ve solunum problemleri azalır.",
+            "sixMonthsBrief":"Öksürük ve nefes darlığı azalır ve enfeksiyon riski azalır.",
+            "oneYearBrief":"Kalp hastalığı riski, sigara içen bir kişiye göre yarı yarıya azalır.",
+            "fiveYearBrief":"İnme ve kanser riski önemli ölçüde azalır.",
+            "tenYearBrief":"Akciğer kanseri ve diğer sigara ile ilişkili kanserlerin riski azalır.",
+            "fifteenYearBrief":"Kalp hastalığı riski, sigara içmeyen bir kişiye eşit seviyeye düşer."
+        }
+    },
+
     "buttons":{
         "save":"Kaydet",
         "info":"Bilgi..."

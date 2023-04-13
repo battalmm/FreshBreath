@@ -8,7 +8,7 @@ class CustomDropdownButton extends StatefulWidget {
       required this.titleText,
       required this.onChanged})
       : super(key: key);
-  List<String> items = LanguageManager.instance.getLanguageNames;
+  final List<String> items = LanguageManager.instance.getLanguageNames;
   final String? selectedItems;
   final String titleText;
   final void Function(String? model) onChanged;

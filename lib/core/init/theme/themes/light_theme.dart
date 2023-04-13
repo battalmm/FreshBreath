@@ -46,7 +46,7 @@ class LightThemeData extends ICustomThemeData {
             ),
             backgroundColor: Colors.transparent,
             elevation: 0,
-            toolbarHeight: 5),
+            toolbarHeight: 55),
         colorScheme: ColorScheme(
           brightness: Brightness.dark,
           primary: fishBoy,

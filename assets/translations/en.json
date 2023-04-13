@@ -36,6 +36,37 @@
         }
     },
 
+    "Informations":{
+        "times":{
+           "twentyMinutes":"20 minutes",
+            "eightHours":"8 hours ",
+            "twelveHours":"12 hours " ,
+            "twentyFourHours":"24 hours " ,
+            "fourtyEightHours":"48 hours " ,
+            "threeDays":"3 days ",
+            "threeMonths":"3 months ",
+            "sixMonths":"6 months " ,
+            "oneYear":"1 year ",
+            "fiveYear":"5 years ",
+            "tenYear":"10 years ",
+            "fifteenYear":"15 years "
+        },
+        "infosRelatedTimes":{
+            "twentyMinutesBrief":"Blood pressure and pulse rate drop to normal levels.",
+            "eightHoursBrief":"Nicotine and carbon monoxide levels in blood reduce by half.",
+            "twelveHoursBrief":"Carbon monoxide levels in blood return to normal.",
+            "twentyFourHoursBrief":"Risk of heart attack starts to decrease.",
+            "fourtyEightHoursBrief":"Nerve endings start to regrow, and sense of smell and taste start to return.",
+            "threeDaysBrief":"Breathing may become easier, and energy levels may improve.",
+            "threeMonthsBrief":"Lung function improves, and breathing problems start to reduce.",
+            "sixMonthsBrief":"Coughing and shortness of breath decrease, and risk of infections reduces.",
+            "oneYearBrief":"Risk of heart disease reduces by half compared to a smoker.",
+            "fiveYearBrief":"Risk of stroke and cancer reduces significantly.",
+            "tenYearBrief":"Risk of lung cancer and other smoking-related cancers reduces.",
+            "fifteenYearBrief":"Risk of heart disease reduces to that of a non-smoker."
+        }
+    },
+
     "buttons":{
         "save":"Save",
         "info":"Information..."

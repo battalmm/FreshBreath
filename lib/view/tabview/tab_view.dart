@@ -1,14 +1,8 @@
-// ignore: implementation_imports
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:smoking_application/core/base/view/base_view.dart';
 import 'package:smoking_application/core/extensions/context_extension.dart';
-import 'package:smoking_application/core/init/navigation/navigation_service.dart';
 import 'package:smoking_application/view/options/view/options_view.dart';
 import 'package:smoking_application/view/test/test_modal_view/testmw.dart';
-import 'package:smoking_application/view/test/testwiev/second_test_view.dart';
-
 import '../home/view/home.dart';
 import '../information/view/information_view_v2.dart';
 
@@ -19,7 +13,8 @@ class HomeTabView extends StatefulWidget {
   State<HomeTabView> createState() => _TestViewState();
 }
 
-class _TestViewState extends State<HomeTabView> with TickerProviderStateMixin {
+class _TestViewState extends State<HomeTabView>
+    with SingleTickerProviderStateMixin {
   late final TabController _tabController;
 
   @override
@@ -29,7 +24,9 @@ class _TestViewState extends State<HomeTabView> with TickerProviderStateMixin {
         _tabController =
             TabController(length: _TabViews.values.length, vsync: this);
       },
-      onDispose: () {},
+      onDispose: () {
+        _tabController.dispose();
+      },
       onBuilder: scaffoldBody,
     );
   }

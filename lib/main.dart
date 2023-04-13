@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:smoking_application/core/init/cache/cache_manager.dart';
-import 'package:smoking_application/core/init/cache/shared_keys.dart';
 import 'core/constants/applications/app_constants.dart';
 import 'core/init/language/language_manager.dart';
 import 'core/init/navigation/navigation_route.dart';
@@ -36,13 +35,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //UPDATE NAVİGATOR WİTH REAL
       navigatorKey: NavigationService.instance.navigatorKey,
       initialRoute: NavigationRoutes.home.name,
       onGenerateRoute: NavigationRoutesPathGeneration.onGenerateRoute,
-      // ADD THEME OPTIONS
       theme: Provider.of<ThemeNotifier>(context).currentTheme,
-      // ADD WORDS TO LOCALİZATİON
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BackGroundCard extends StatelessWidget {
-  BackGroundCard(
+  const BackGroundCard(
       {Key? key,
       this.child,
       required this.stackedIcon,
@@ -40,7 +40,7 @@ class BackGroundCard extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color: blurColor ?? Theme.of(context).colorScheme.primary,
-                  offset: offset ?? Offset(2, 2),
+                  offset: offset ?? const Offset(2, 2),
                   blurRadius: blurRadius ?? 5,
                 )
               ]),

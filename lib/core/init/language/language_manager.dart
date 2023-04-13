@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:smoking_application/core/init/cache/cache_manager.dart';
 import 'package:smoking_application/core/init/cache/shared_keys.dart';

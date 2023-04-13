@@ -46,7 +46,7 @@ Center _insideOfOptionsColumnRow({
         Center(
           child: Row(
             children: [
-              Spacer(),
+              const Spacer(),
               Padding(
                 padding: context.mediumPaddingOnlyRight,
                 child: rightSideIcon ?? const Icon(Icons.arrow_circle_right),
@@ -97,7 +97,7 @@ BackGroundCard _backGroundCardForTheme({
           Center(
             child: Row(
               children: [
-                Spacer(),
+                const Spacer(),
                 InkWell(
                   onTap: onTap,
                   highlightColor: Theme.of(context).colorScheme.primary,

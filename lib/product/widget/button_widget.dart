@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-//
 class ButtonWidget extends Container {
   ButtonWidget({
     required this.onPressed,
@@ -27,5 +26,5 @@ class ButtonWidget extends Container {
   final double width;
   final double? borderRadiusCircular;
   final Widget? text;
-  void Function()? onPressed;
+  final void Function()? onPressed;
 }

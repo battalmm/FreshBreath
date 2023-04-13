@@ -5,12 +5,8 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:smoking_application/core/init/language/language_manager.dart';
-
 import 'package:smoking_application/main.dart';
 
 void main() {
