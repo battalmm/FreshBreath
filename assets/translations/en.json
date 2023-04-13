@@ -27,7 +27,13 @@
         "optionsLanguage":"Language",
         "optionsInformations":"Informations",
         "optionsTheme":"Theme",
-        "optionsRestart":"I smoked restart"
+        "optionsRestart":"I smoked restart",
+        "restartDialog" : {
+            "restartDialogTitle":"Are You Sure ?",
+            "restartDialogBody":"You are going to refresh your progress ...",
+            "restartDialogCancelButton":"Cancel",
+            "restartDialogOkayButton":"Okay"
+        }
     },
 
     "buttons":{

@@ -27,7 +27,13 @@
         "optionsLanguage":"Dil tercihi",
         "optionsInformations":"Bilgiler",
         "optionsTheme":"Tema",
-        "optionsRestart":"Sigara içtim. Başa dön."
+        "optionsRestart":"Sigara içtim. Başa dön.",
+        "restartDialog" : {
+            "restartDialogTitle":"Emin misin ?",
+            "restartDialogBody":"İlerlemeni sıfırlamak üzeresin ...",
+            "restartDialogCancelButton":"Geri",
+            "restartDialogOkayButton":"Tamam"
+        }
     },
 
     "buttons":{

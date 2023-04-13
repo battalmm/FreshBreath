@@ -1,6 +1,8 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-abstract class  LocaleKeys {
+// ignore_for_file: constant_identifier_names
+
+abstract class LocaleKeys {
   static const home_passedTimeHeader = 'home.passedTimeHeader';
   static const home_day = 'home.day';
   static const home_hour = 'home.hour';
@@ -15,7 +17,8 @@ abstract class  LocaleKeys {
   static const home = 'home';
   static const settings_settingsHeader = 'settings.settingsHeader';
   static const settings_dailySmokeCount = 'settings.dailySmokeCount';
-  static const settings_cigaratteCountPerPackage = 'settings.cigaratteCountPerPackage';
+  static const settings_cigaratteCountPerPackage =
+      'settings.cigaratteCountPerPackage';
   static const settings_pricePackage = 'settings.pricePackage';
   static const settings_smokeDuration = 'settings.smokeDuration';
   static const settings_currentValue = 'settings.currentValue';
@@ -25,9 +28,17 @@ abstract class  LocaleKeys {
   static const options_optionsInformations = 'options.optionsInformations';
   static const options_optionsTheme = 'options.optionsTheme';
   static const options_optionsRestart = 'options.optionsRestart';
+  static const options_restartDialog_restartDialogTitle =
+      'options.restartDialog.restartDialogTitle';
+  static const options_restartDialog_restartDialogBody =
+      'options.restartDialog.restartDialogBody';
+  static const options_restartDialog_restartDialogCancelButton =
+      'options.restartDialog.restartDialogCancelButton';
+  static const options_restartDialog_restartDialogOkayButton =
+      'options.restartDialog.restartDialogOkayButton';
+  static const options_restartDialog = 'options.restartDialog';
   static const options = 'options';
   static const buttons_save = 'buttons.save';
   static const buttons_info = 'buttons.info';
   static const buttons = 'buttons';
-
 }

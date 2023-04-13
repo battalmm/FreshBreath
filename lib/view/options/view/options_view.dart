@@ -8,6 +8,7 @@ import 'package:smoking_application/core/extensions/string_extension.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smoking_application/product/enum/lottie_path.dart';
 import 'package:smoking_application/product/widget/dropdown_button.dart';
+import 'package:smoking_application/view/test/testwiev/Lottie.dart';
 import '../../../core/extensions/duration_extension.dart';
 import '../../../core/init/cache/cache_manager.dart';
 import '../../../core/init/cache/shared_keys.dart';
@@ -96,12 +97,7 @@ class _OptionsViewState extends State<OptionsView>
       text: text,
       icon: Icons.translate,
       isClickable: false,
-      rightSideIcon: CustomDropdownButton(
-          titleText:
-              CacheManager.instance.getStringValue(SharedKeys.language) ?? "tr",
-          onChanged: (items) {
-            languageOptions(context, items);
-          }),
+      rightSideIcon: _languageElevatedButton(context),
     );
   }
 
@@ -112,9 +108,7 @@ class _OptionsViewState extends State<OptionsView>
       text: text,
       icon: Icons.settings,
       isClickable: true,
-      onTap: () {
-        navigateToSettings();
-      },
+      onTap: () => navigateToSettings(),
     );
   }
 
@@ -126,31 +120,19 @@ class _OptionsViewState extends State<OptionsView>
       context: context,
       text: text,
       icon: Icons.light_mode,
-      rightSideIcon: Lottie.asset(
-        LottieItems.themeChangeAnimationIcon.getLottie,
-        repeat: false,
-        controller: controller,
-        height: context.mediaQueryHeightSmall,
-        width: context.mediaQueryHeightSmall,
-        onLoaded: (p0) => onLoadAnimation(controller),
-      ),
-      onTap: () {
-        themeSettings(context, controller);
-      },
+      rightSideIcon: _lottieAsset(context, controller),
+      onTap: () => themeSettings(context, controller),
     );
   }
 
   BackGroundCard _fourthContainer(
       {required BuildContext context, required String text}) {
     return _backGroundCard(
-      context: context,
-      isClickable: true,
-      text: text,
-      icon: Icons.restart_alt,
-      onTap: () {
-        refreshPickedTimeAndSave();
-      },
-    );
+        context: context,
+        isClickable: true,
+        text: text,
+        icon: Icons.restart_alt,
+        onTap: _restartCounter(context));
   }
 }
 

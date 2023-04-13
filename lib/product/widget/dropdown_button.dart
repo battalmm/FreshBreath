@@ -27,8 +27,6 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
   }
 
   void _changeSelectItems(String? data) {
-    // model ya da listemizden gelen datalar.
-    // data from our model or list.
     setState(() {
       _selectedItems = data;
     });
@@ -38,6 +36,11 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
+        icon:
+            Icon(Icons.language, color: Theme.of(context).colorScheme.primary),
+        alignment: AlignmentDirectional.center,
+        dropdownColor: Theme.of(context).colorScheme.background,
+        borderRadius: BorderRadius.circular(32),
         hint: Text(widget.titleText),
         value: _selectedItems,
         onChanged: _changeSelectItems,

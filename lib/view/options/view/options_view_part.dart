@@ -113,3 +113,48 @@ BackGroundCard _backGroundCardForTheme({
     ),
   );
 }
+
+Widget _languageElevatedButton(BuildContext context) {
+  return Padding(
+    padding: context.mediumPaddingHorizontal,
+    child: CustomDropdownButton(
+        titleText:
+            CacheManager.instance.getStringValue(SharedKeys.language) ?? "tr",
+        onChanged: (items) {
+          languageOptions(context, items);
+        }),
+  );
+}
+
+Widget _lottieAsset(BuildContext context, AnimationController controller) {
+  return Lottie.asset(
+    LottieItems.themeChangeAnimationIcon.getLottie,
+    repeat: false,
+    controller: controller,
+    height: context.mediaQueryHeightSmall,
+    width: context.mediaQueryHeightSmall,
+    onLoaded: (p0) => onLoadAnimation(controller),
+  );
+}
+
+dynamic _restartCounter(BuildContext context) {
+  return () async {
+    bool _isRestart = await showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          return RestartDialog(
+            context: context,
+            cancelText: LocaleKeys
+                .options_restartDialog_restartDialogCancelButton.translate,
+            title:
+                LocaleKeys.options_restartDialog_restartDialogTitle.translate,
+            content:
+                LocaleKeys.options_restartDialog_restartDialogBody.translate,
+            okayText: LocaleKeys
+                .options_restartDialog_restartDialogOkayButton.translate,
+          );
+        });
+    _isRestart ? refreshPickedTimeAndSave() : null;
+  };
+}
