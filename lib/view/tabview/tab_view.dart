@@ -8,19 +8,18 @@ import 'package:smoking_application/core/init/navigation/navigation_service.dart
 import 'package:smoking_application/view/options/view/options_view.dart';
 import 'package:smoking_application/view/test/test_modal_view/testmw.dart';
 import 'package:smoking_application/view/test/testwiev/second_test_view.dart';
-import '../../home/view/home.dart';
-import '../../information/view/information_view_v2.dart';
-import '../../settings/view/settings.dart';
-import 'Lottie.dart';
 
-class TestView1 extends StatefulWidget {
-  const TestView1({Key? key}) : super(key: key);
+import '../home/view/home.dart';
+import '../information/view/information_view_v2.dart';
+
+class HomeTabView extends StatefulWidget {
+  const HomeTabView({Key? key}) : super(key: key);
 
   @override
-  State<TestView1> createState() => _TestViewState();
+  State<HomeTabView> createState() => _TestViewState();
 }
 
-class _TestViewState extends State<TestView1> with TickerProviderStateMixin {
+class _TestViewState extends State<HomeTabView> with TickerProviderStateMixin {
   late final TabController _tabController;
 
   @override

@@ -20,11 +20,12 @@ import '../../../core/init/notifier/theme_notifier.dart';
 import '../../../product/enum/app_themes.dart';
 import '../../../product/enum/languages.dart';
 import '../../../product/widget/header_and_body.dart';
+import '../../../product/widget/restart_dialog.dart';
 
 part 'options_view_part.dart';
 
 class OptionsView extends StatefulWidget {
-  OptionsView({Key? key}) : super(key: key);
+  const OptionsView({Key? key}) : super(key: key);
 
   @override
   State<OptionsView> createState() => _OptionsViewState();
@@ -173,11 +174,12 @@ void onLoadAnimation(AnimationController controller) {
           : false;
 
   controller.animateTo(_themeController ? 1 : 0.5);
-  controller.duration = Duration().themeDurationOne;
+  controller.duration = const Duration().themeDurationOne;
 }
 
 void navigateToSettings() {
-  NavigationService.instance.pushNamed(path: NavigationRoutes.settings);
+  NavigationService.instance
+      .pushNamed(path: NavigationRoutes.userInformationView);
 }
 
 void languageOptions(BuildContext context, String? localeCode) {

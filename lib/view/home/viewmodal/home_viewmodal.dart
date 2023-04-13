@@ -44,47 +44,27 @@ abstract class _HomeViewModalBase with Store, BaseViewModel {
   String hourlySmokedCigaratteCalcullation(int hour) {
     int dailySmokingCigaratte =
         CacheManager.instance.getIntValue(SharedKeys.dailySmoked) ?? 0;
-    //debugPrint("dailySmokingCigaratte " + dailySmokingCigaratte.toString());
     int passedTimeByHours = hour;
 
     hourlySmokedCigaratte =
         ((dailySmokingCigaratte / 24) * passedTimeByHours).toInt();
 
-    //cache kaydet
-
     return hourlySmokedCigaratte.toString();
-
-    // req Günlük içilen sigara miktarı
-    // req geçen saat
-    //
-    // (günlük içilen sigara miktarı / 24) * geçen saat = saate göre içilen sigara miktarı
   }
 
   @action
   String moneyCalculation(int? hourlySmokedCigaratte) {
     int cigaratteInOnePackage =
         CacheManager.instance.getIntValue(SharedKeys.countPackage) ?? 0;
-    //debugPrint("cigaratteInOnePackage  " + cigaratteInOnePackage.toString());
 
     int moneyOfOnePackage =
         CacheManager.instance.getIntValue(SharedKeys.pricePackage) ?? 1;
-    //debugPrint("moneyOfOnePackage  " + moneyOfOnePackage.toString());
 
     double perStockPrice = cigaratteInOnePackage /
         (moneyOfOnePackage == 0 ? 1 : moneyOfOnePackage);
 
     double totalMoney = ((hourlySmokedCigaratte ?? 0) * perStockPrice);
-    //debugPrint("hourlySmokedCigaratte  " + hourlySmokedCigaratte.toString());
-    //cache kaydet
-
     return totalMoney.toStringAsFixed(2);
-
-    // req Paketin miktarı
-    // req Paketin fiyatı
-    // içilmeyen sigara
-    //
-    // paketin fiyatı / Paketin miktarı = bir dal sigara fiyatı
-    // içilmeyen sigara * bir dal sigara fiyatı = toplma kazanç
   }
 
   @action
@@ -95,7 +75,6 @@ abstract class _HomeViewModalBase with Store, BaseViewModel {
   }) {
     int smokingTime =
         CacheManager.instance.getIntValue(SharedKeys.smokingTime) ?? 1;
-    //debugPrint("smokingTime  " + smokingTime.toString());
 
     int savedTime = (smokingTime * (hourlySmokedCigaratte ?? 0)).toInt();
 
@@ -166,8 +145,6 @@ abstract class _HomeViewModalBase with Store, BaseViewModel {
 
   void _initializePickedTime() {
     final date = CacheManager.instance.getStringValue(SharedKeys.pickedTime);
-    //debugPrint("Date  " + date.toString());
-    //debugPrint("Date   " + date.toString());
     if (date != null) {
       pickedTime = DateTime.parse(date.toString());
     } else {

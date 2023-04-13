@@ -4,13 +4,13 @@ import 'package:mobx/mobx.dart';
 class BaseView<T extends Store> extends StatefulWidget {
   const BaseView(
       {Key? key,
-      this.onDispose,
+      required this.onDispose,
       required this.onBuilder,
       required this.onInitModal})
       : super(key: key);
 
   final Function() onInitModal;
-  final VoidCallback? onDispose;
+  final Function() onDispose;
   final Widget Function(BuildContext context) onBuilder;
 
   @override
@@ -27,7 +27,7 @@ class _BaseViewState<T extends Store> extends State<BaseView<T>> {
   @override
   void dispose() {
     debugPrint('Disposing searchController and Widget!');
-    if (widget.onDispose != null) widget.onDispose;
+    widget.onDispose();
     super.dispose();
   }
 

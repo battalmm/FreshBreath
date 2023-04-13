@@ -19,6 +19,7 @@ import '../../../core/init/navigation/navigation_route.dart';
 import '../../../core/init/navigation/navigation_service.dart';
 import '../../../product/enum/app_themes.dart';
 import '../../../product/enum/languages.dart';
+import '../../information/view/information_view_v2.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   late HomeViewModal homeViewModal;
-
+  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return BaseView(
@@ -38,36 +39,16 @@ class _HomeViewState extends State<HomeView> {
         homeViewModal = HomeViewModal();
         homeViewModal.init();
       },
+      onDispose: () {
+        homeViewModal.dispose();
+      },
     );
   }
 
   Widget _scaffoldBuild(BuildContext context) {
     return Scaffold(
       // BOTTOM NAVİGATİONI ÇIKAR
-      bottomNavigationBar: BottomNavigationBar(
-        showUnselectedLabels: false,
-        showSelectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        items: _bottomNavigationItems,
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              homeViewModal.dispose();
-              NavigationService.instance.pushtest(path: NavigationRoutes.home);
-              break;
-            case 1:
-              NavigationService.instance
-                  .pushNamedClear(path: NavigationRoutes.test);
-              break;
-            case 2:
-              NavigationService.instance
-                  .pushNamedClear(path: NavigationRoutes.settings);
 
-              break;
-          }
-        },
-      ),
       body: Padding(
         padding: context.mediumPaddingAll,
         child: Column(
@@ -241,14 +222,11 @@ class _HomeViewState extends State<HomeView> {
 
   TextButton _healthInfoTextButton() {
     return TextButton(
-      onPressed: (() {
-        NavigationService.instance
-            .pushNamed(path: NavigationRoutes.information, args: [
-          homeViewModal.timeDifferenceList?[0],
-          homeViewModal.timeDifferenceList?[1],
-          homeViewModal.timeDifferenceList?[2],
-        ]);
-      }),
+      onPressed: () {
+        NavigationService.instance.pushNamed(
+          path: NavigationRoutes.testView,
+        );
+      },
       child: const Text(
         "Health info...",
         style: TextStyle(fontSize: 16),

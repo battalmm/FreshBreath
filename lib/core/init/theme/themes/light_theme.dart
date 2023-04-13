@@ -14,6 +14,8 @@ class LightThemeData extends ICustomThemeData {
 
   Color dark = Colors.black;
 
+  Color grey = Colors.grey;
+
   @override
   ThemeData get theme => ThemeData.light().copyWith(
         backgroundColor: Colors.grey.shade100,
@@ -53,8 +55,8 @@ class LightThemeData extends ICustomThemeData {
           onSecondary: white,
           error: fishBoy,
           onError: fishBoy,
-          background: Colors.grey.shade200,
-          onBackground: dark,
+          background: backgroundColor,
+          onBackground: grey,
           surface: dark,
           onSurface: fishBoy,
         ),

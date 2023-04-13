@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:smoking_application/view/home/view/home.dart';
 import 'package:smoking_application/view/information/informations_view.dart';
+import 'package:smoking_application/view/options/view/options_view.dart';
+import 'package:smoking_application/view/tabview/tab_view.dart';
 import 'package:smoking_application/view/test/testwiev/second_test_view.dart';
 import 'package:smoking_application/view/test/testwiev/test_view_copy1.dart';
 
+import '../../../view/information/view/information_view_v2.dart';
 import '../../../view/settings/view/settings.dart';
 
 class NavigationRoutesPathGeneration {
@@ -12,25 +16,24 @@ class NavigationRoutesPathGeneration {
         ? NavigationRoutes.home
         : NavigationRoutes.values.byName(controller.name!);
 
-    // UPDATE WHEN PAGES DONE
     switch (_route) {
       case NavigationRoutes.home:
+        return _normalRoute(const HomeTabView());
+
+      case NavigationRoutes.mainView:
         return _normalRoute(const HomeView());
 
-      case NavigationRoutes.information:
-        List valueList = [controller.arguments];
-        return _normalRoute(InformationsView(
-          userInfo: valueList,
-        ));
+      case NavigationRoutes.informationView:
+        return _normalRoute(const InformationsView());
 
-      case NavigationRoutes.settingsTest:
-        return _normalRoute(TestView2());
+      case NavigationRoutes.optionsView:
+        return _normalRoute(const OptionsView());
 
-      case NavigationRoutes.settings:
+      case NavigationRoutes.userInformationView:
         return _normalRoute(const SettingsView());
 
-      case NavigationRoutes.test:
-        return _normalRoute(TestView1());
+      case NavigationRoutes.testView:
+        return _normalRoute(const TestView1());
     }
   }
 
@@ -39,4 +42,11 @@ class NavigationRoutesPathGeneration {
   }
 }
 
-enum NavigationRoutes { home, information, settingsTest, settings, test }
+enum NavigationRoutes {
+  home,
+  mainView,
+  informationView,
+  optionsView,
+  userInformationView,
+  testView
+}

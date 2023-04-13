@@ -2,22 +2,52 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:smoking_application/core/base/view/base_view.dart';
 import 'package:smoking_application/core/extensions/string_extension.dart';
-import '../../core/base/state/base_state.dart';
-import '../../core/init/language/locale_keys.g.dart';
+import 'package:smoking_application/core/init/cache/cache_manager.dart';
+import '../../../core/base/state/base_state.dart';
+import '../../../core/init/cache/shared_keys.dart';
+import '../../../core/init/language/locale_keys.g.dart';
 
-class InformationsView2 extends StatefulWidget {
-  InformationsView2({
-    Key? key,
-    required this.userInfo,
-  }) : super(key: key);
-
-  List<dynamic>? userInfo;
+class InformationsView extends StatefulWidget {
+  const InformationsView({Key? key}) : super(key: key);
 
   @override
-  State<InformationsView2> createState() => _InformationsView2State();
+  State<InformationsView> createState() => _InformationsViewState();
 }
 
-class _InformationsView2State extends BaseState<InformationsView2> {
+class _InformationsViewState extends BaseState<InformationsView> {
+  late List<int>? userInfo;
+
+  DateTime initializePickedTime() {
+    DateTime? pickedTime;
+    final date = CacheManager.instance.getStringValue(SharedKeys.pickedTime);
+    if (date != null) {
+      pickedTime = DateTime.parse(date.toString());
+    } else {
+      pickedTime = DateTime.now();
+    }
+    return pickedTime;
+  }
+
+  List<int> calculateTimeDifference() {
+    Duration? _timeDifference;
+    DateTime? _pickedTime;
+    DateTime? _currentTime;
+    _currentTime = DateTime.now();
+    _pickedTime = initializePickedTime();
+
+    _timeDifference = _pickedTime != null
+        ? _currentTime.difference(_pickedTime)
+        : const Duration();
+
+    List<int> timeDifferenceList = [
+      _timeDifference.inMinutes,
+      _timeDifference.inHours,
+      _timeDifference.inDays
+    ];
+    debugPrint(_timeDifference.toString());
+    return timeDifferenceList;
+  }
+
   // UPDATE WİTH LOCALS
   Map<String, String> timeAndHealthInfos = {
     LocaleKeys.home_minuteOneChar.translate: "WillChange",
@@ -50,12 +80,9 @@ class _InformationsView2State extends BaseState<InformationsView2> {
   ];
 
   double timeCalculation(int index) {
-    double minute = widget.userInfo?[0][0].toDouble() ?? 0;
-    double hour = widget.userInfo?[0][1].toDouble() ?? 0;
-    double day = widget.userInfo?[0][2].toDouble() ?? 0;
-    // double minute = 19;
-    // double hour = 0;
-    // double day = 360;
+    double minute = userInfo?[0].toDouble() ?? 0;
+    double hour = userInfo?[1].toDouble() ?? 0;
+    double day = userInfo?[2].toDouble() ?? 0;
     double target = timeTarget[index];
     double value = 0;
 
@@ -85,7 +112,9 @@ class _InformationsView2State extends BaseState<InformationsView2> {
   Widget build(BuildContext context) {
     return BaseView(
       onBuilder: _scaffoldBody,
-      onInitModal: () {},
+      onInitModal: () {
+        userInfo = calculateTimeDifference();
+      },
       onDispose: () {},
     );
   }
@@ -110,7 +139,7 @@ class _InformationsView2State extends BaseState<InformationsView2> {
             child: ListTile(
               onTap: (() {
                 //SHOW POPUP
-                debugPrint(widget.userInfo?[0].toString());
+                debugPrint(userInfo?[0].toString());
                 debugPrint(index.toString());
               }),
               leading: _circlePercentIndicator(index, context),

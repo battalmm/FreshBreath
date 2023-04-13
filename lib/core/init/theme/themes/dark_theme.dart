@@ -10,6 +10,8 @@ class DarkThemeData extends ICustomThemeData {
 
   Color white = Colors.white;
 
+  Color whiteGrey = Colors.grey.shade300;
+
   Color dark = Colors.grey.shade800;
 
   @override
@@ -48,7 +50,7 @@ class DarkThemeData extends ICustomThemeData {
         error: orange,
         onError: white,
         background: dark,
-        onBackground: white,
+        onBackground: whiteGrey,
         surface: orange,
         onSurface: dark,
       ),

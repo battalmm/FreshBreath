@@ -35,3 +35,7 @@ extension MediaQueryExtension on BuildContext {
 
   double get mediaQueryHeightSmall => MediaQuery.of(this).size.height / 12;
 }
+
+extension BorderRadiusExtension on BuildContext {
+  double get mediumCircularBorderRadius => 36;
+}
