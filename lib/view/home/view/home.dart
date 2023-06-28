@@ -221,9 +221,9 @@ class _HomeViewState extends State<HomeView> {
   TextButton _healthInfoTextButton() {
     return TextButton(
       onPressed: () {
-        NavigationService.instance.pushNamed(
-          path: NavigationRoutes.testView,
-        );
+        // NavigationService.instance.pushNamed(
+        // path: NavigationRoutes.testView,
+        // );
       },
       child: const Text(
         "Attempts...",

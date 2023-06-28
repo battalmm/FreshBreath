@@ -37,6 +37,7 @@
     },
 
     "Informations":{
+        "informationsHeader": "Health",
         "times":{
            "twentyMinutes":"20 minutes",
             "eightHours":"8 hours ",

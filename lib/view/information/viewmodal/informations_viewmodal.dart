@@ -13,6 +13,7 @@ class InformationsViewModal = _InformationsViewModalBase
 abstract class _InformationsViewModalBase with Store {
   void init() {
     userInfo = calculateTimeDifference();
+    scrollController = ScrollController();
   }
 
   @observable
@@ -44,6 +45,8 @@ abstract class _InformationsViewModalBase with Store {
   };
 
   List<int>? userInfo;
+
+  late ScrollController scrollController;
 
   DateTime initializePickedTime() {
     DateTime? pickedTime;

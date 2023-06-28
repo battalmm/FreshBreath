@@ -37,6 +37,7 @@
     },
 
     "Informations":{
+        "informationsHeader": "Sağlık",
         "times":{
            "twentyMinutes":"20 dakika",
             "eightHours":"8 saat ",

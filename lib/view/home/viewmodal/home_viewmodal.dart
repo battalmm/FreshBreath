@@ -55,7 +55,7 @@ abstract class _HomeViewModalBase with Store, BaseViewModel {
   @action
   String moneyCalculation(int? hourlySmokedCigaratte) {
     int cigaratteInOnePackage =
-        CacheManager.instance.getIntValue(SharedKeys.countPackage) ?? 0;
+        CacheManager.instance.getIntValue(SharedKeys.countPackage) ?? 1;
 
     int moneyOfOnePackage =
         CacheManager.instance.getIntValue(SharedKeys.pricePackage) ?? 1;

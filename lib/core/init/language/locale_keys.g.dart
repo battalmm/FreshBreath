@@ -38,6 +38,8 @@ abstract class LocaleKeys {
       'options.restartDialog.restartDialogOkayButton';
   static const options_restartDialog = 'options.restartDialog';
   static const options = 'options';
+  static const Informations_informationsHeader =
+      'Informations.informationsHeader';
   static const Informations_times_twentyMinutes =
       'Informations.times.twentyMinutes';
   static const Informations_times_eightHours = 'Informations.times.eightHours';
