@@ -7,6 +7,7 @@ import 'package:smoking_application/core/init/navigation/navigation_service.dart
 import 'package:smoking_application/view/information/viewmodal/informations_viewmodal.dart';
 import '../../../core/base/state/base_state.dart';
 import '../../../core/extensions/context_extension.dart';
+import '../../../product/widget/bottom_sheet.dart';
 
 class InformationsView extends StatefulWidget {
   const InformationsView({Key? key}) : super(key: key);
@@ -48,44 +49,56 @@ class _InformationsViewState extends BaseState<InformationsView> {
       itemBuilder: (BuildContext context, int index) {
         return SizedBox(
           child: Card(
-            child: ListTile(
-              onTap: (() {
-                /////**********
-                ///
-                ///
-                ///
-                showModalBottomSheet(
-                  context: context,
-                  useSafeArea: false,
-                  isDismissible: true,
-                  backgroundColor: Theme.of(context).colorScheme.background,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(context.mediumCircularBorderRadius),
-                    ),
-                  ),
-                  builder: (context) {
-                    return CustomSheet();
-                  },
-                );
-                debugPrint(index.toString());
+            child: _listTile(context, index),
+          ),
+        );
+      },
+    );
+  }
 
-                ///
-                ///
-                ///
-                ////////*********
-              }),
-              leading: _circlePercentIndicator(
-                index,
-                context,
-                informationsViewModal.timeCalculation(index),
-              ),
-              subtitle: Text(informationsViewModal.timeAndHealthInfos.values
-                  .elementAt(index)),
-              title: Text(informationsViewModal.timeAndHealthInfos.keys
-                  .elementAt(index)),
-              trailing: const Icon(Icons.keyboard_arrow_right_rounded),
-            ),
+  ListTile _listTile(BuildContext context, int index) {
+    return ListTile(
+      onTap: (() {
+        _bottomSheet(context, index);
+      }),
+      leading: _circlePercentIndicator(
+        index,
+        context,
+        informationsViewModal.timeCalculation(index),
+      ),
+      subtitle: Text(
+          informationsViewModal.timeAndHealthInfos.values.elementAt(index)),
+      title:
+          Text(informationsViewModal.timeAndHealthInfos.keys.elementAt(index)),
+      trailing: const Icon(Icons.keyboard_arrow_right_rounded),
+    );
+  }
+
+  Future<dynamic> _bottomSheet(BuildContext context, int index) {
+    return showModalBottomSheet(
+      context: context,
+      useSafeArea: false,
+      isDismissible: true,
+      backgroundColor: Theme.of(context).colorScheme.background,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(context.mediumCircularBorderRadius),
+        ),
+      ),
+      builder: (context) {
+        return CustomSheet(
+          header:
+              informationsViewModal.timeAndHealthInfos.keys.elementAt(index),
+          text:
+              informationsViewModal.timeAndHealthInfos.values.elementAt(index),
+          circleProgressIndicator: _circlePercentIndicator(
+            index,
+            context,
+            informationsViewModal.timeCalculation(index),
+            lineWidth: context.mediumLineWidth,
+            radius: context.mediumCircularRadius,
+            centerTextFontSize:
+                Theme.of(context).textTheme.titleLarge!.fontSize,
           ),
         );
       },
@@ -95,116 +108,26 @@ class _InformationsViewState extends BaseState<InformationsView> {
   CircularPercentIndicator _circlePercentIndicator(
     int index,
     BuildContext context,
-    double percent,
-  ) {
+    double percent, {
+    double? radius,
+    double? lineWidth,
+    double? centerTextFontSize,
+  }) {
     return CircularPercentIndicator(
       addAutomaticKeepAlive: false,
       curve: Curves.easeOut,
       animationDuration: 2000,
       animation: true,
-      radius: 24.0,
-      lineWidth: 5,
+      radius: radius ?? context.smallCircularRadius,
+      lineWidth: lineWidth ?? context.smallLineWidth,
       percent: percent,
       progressColor: Theme.of(context).colorScheme.primary,
-      center: Text("${(percent * 100).toStringAsFixed(0)}%"),
-    );
-  }
-}
-
-class CustomSheet extends StatelessWidget {
-  const CustomSheet({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: [SheetHeader(), Expanded(child: DetailedHealthInformations())],
-    );
-  }
-}
-
-class SheetHeader extends StatelessWidget {
-  const SheetHeader({Key? key, String? header})
-      : header = header ?? "NULL_HEADER",
-        super(key: key);
-
-  final String header;
-
-  @override
-  Widget build(BuildContext context) {
-    final _headersVerticalAllignment = context.mediaQueryHeightSmall / 3;
-    return SizedBox(
-      height: context.mediaQueryHeightSmall,
-      child: Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          Positioned(
-            top: _headersVerticalAllignment,
-            child: Text(
-              header,
-              style: TextStyle(
-                fontSize: Theme.of(context).textTheme.headlineSmall!.fontSize,
-              ),
-            ),
-          ),
-          Positioned(
-            top: _headersVerticalAllignment,
-            right: context.mediaQueryWidth / 15,
-            child: InkWell(
-                highlightColor: Colors.transparent,
-                splashColor: Colors.transparent,
-                onTap: () {
-                  NavigationService.instance.pop();
-                },
-                child: const Icon(
-                  Icons.cancel,
-                  size: 30,
-                )),
-          )
-        ],
+      center: Text(
+        "${(percent * 100).toStringAsFixed(0)}%",
+        style: TextStyle(
+            fontSize: centerTextFontSize ??
+                Theme.of(context).textTheme.bodyMedium!.fontSize),
       ),
     );
   }
 }
-
-class DetailedHealthInformations extends StatelessWidget {
-  const DetailedHealthInformations({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    // Bu kısmı hallet
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(32.0),
-            child: Center(
-                child: Container(
-              child: Placeholder(),
-            )),
-          ),
-          Center(
-              child: Container(
-            child: Placeholder(),
-          )),
-        ],
-      ),
-    );
-  }
-}
-
-// class DetailedHealthInformations extends StatefulWidget {
-//   const DetailedHealthInformations({Key? key}) : super(key: key);
-
-//   @override
-//   State<DetailedHealthInformations> createState() =>
-//       _DetailedHealthInformationsState();
-// }
-
-// class _DetailedHealthInformationsState
-//     extends State<DetailedHealthInformations> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container();
-//   }
-// }

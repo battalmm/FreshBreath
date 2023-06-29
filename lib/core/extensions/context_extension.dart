@@ -37,3 +37,10 @@ extension MediaQueryExtension on BuildContext {
 extension BorderRadiusExtension on BuildContext {
   double get mediumCircularBorderRadius => 36;
 }
+
+extension CircleProgress on BuildContext {
+  double get mediumLineWidth => 13.0;
+  double get smallLineWidth => 5.0;
+  double get mediumCircularRadius => 60.0;
+  double get smallCircularRadius => 24.0;
+}
